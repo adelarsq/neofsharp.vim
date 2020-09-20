@@ -1,12 +1,12 @@
 # NeoFsharp.vim
 
-F# support for NeoVim.
+[F#](https://fsharp.org) support for [NeoVim](https://github.com/neovim/neovim).
 
 ## Features
 
-- Syntax support
-- Filetype support for F# files
-- Basic support for [Keithbsmiley/investigate.vim](https://github.com/Keithbsmiley/investigate.vim) on *.fsproj files
+- Syntax support;
+- Filetype support for F# files;
+- Basic support for [Keithbsmiley/investigate.vim](https://github.com/Keithbsmiley/investigate.vim) on `*.fsproj` files.
 
 ## Acknowledgments
 
