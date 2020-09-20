@@ -1,6 +1,6 @@
 # NeoFsharp.vim
 
-[F#](https://fsharp.org) support for [NeoVim](https://github.com/neovim/neovim).
+[F#](https://fsharp.org) support for ([Neo](https://github.com/neovim/neovim))[Vim](https://github.com/vim/vim).
 
 ## Features
 
