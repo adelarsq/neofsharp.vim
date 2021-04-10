@@ -133,12 +133,16 @@ syn keyword fsharpOperator   not and or
 
 syn match   fsharpFormat     display "%\(\d\+\$\)\=[-+' #0*]*\(\d*\|\*\|\*\d\+\$\)\(\.\(\d*\|\*\|\*\d\+\$\)\)\=\([hlL]\|ll\)\=\([bscdiuxXoEefFgGMOAat]\|\[\^\=.[^]]*\]\)" contained
 
+" interpolation
+syn region   fsharpInterpolation matchgroup=fsharpInterpolationBrace start="\v\{" end="\v\}" contains=ALLBUT,fsharpArrErr,fsharpScript
+
 syn match    fsharpCharacter    "'\\\d\d\d'\|'\\[\'ntbr]'\|'.'"
 syn match    fsharpCharErr      "'\\\d\d'\|'\\\d'"
 syn match    fsharpCharErr      "'\\[^\'ntbr]'"
 syn region   fsharpString       start=+"+ skip=+\\\\\|\\"+ end=+"+ contains=fsharpFormat
 syn region   fsharpString       start=+"""+ skip=+\\\\\|\\"+ end=+"""+ contains=fsharpFormat
 syn region   fsharpString       start=+@"+ skip=+""+ end=+"+ contains=fsharpFormat
+syn region   fsharpString       start=+$"+ end=+"+ contains=fsharpFormat,fsharpInterpolation,@Spell
 
 syn match    fsharpFunDef       "->"
 syn match    fsharpRefAssign    ":="
