@@ -2,6 +2,8 @@
 
 [F#](https://fsharp.org) support for ([Neo](https://github.com/neovim/neovim))[Vim](https://github.com/vim/vim).
 
+<img width="401" alt="Captura de Tela 2021-04-10 às 20 17 30" src="https://user-images.githubusercontent.com/430272/114287022-14a3ec80-9a3a-11eb-80fc-26ead5f9efb0.png">
+
 ## Features
 
 - Syntax support;
