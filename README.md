@@ -9,7 +9,7 @@
 - Syntax support;
 - Filetype support for F# files;
 - Basic support for [Keithbsmiley/investigate.vim](https://github.com/Keithbsmiley/investigate.vim) on `*.fsproj` files.
-- Highlight for [https://github.com/Zaid-Ajaj/Feliz](https://github.com/Zaid-Ajaj/Feliz)
+- Highlight for [Zaid-Ajaj/Feliz](https://github.com/Zaid-Ajaj/Feliz)
 
 ## Acknowledgments
 
