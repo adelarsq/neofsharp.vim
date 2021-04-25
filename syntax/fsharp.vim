@@ -74,7 +74,19 @@ syn keyword fsharpKeyword    extern for fun function global if in inherit inline
 syn keyword fsharpKeyword    interface lazy let match member module mutable
 syn keyword fsharpKeyword    namespace new of override rec static struct then
 syn keyword fsharpKeyword    to type upcast use val void when while with
-syn keyword fsharpKeyword    Html div button h1
+
+" Feliz keywords
+syn keyword fsharpKeyword Html
+syn keyword fsharpKeyword a abbr address anchor animate animateMotion animateTransform area article aside
+syn keyword fsharpKeyword audio b base bdi bdo blockquote body br button canvas caption cite code col
+syn keyword fsharpKeyword colgroup data datalist dd del details dfn dialog div dl dt em embed fieldSet
+syn keyword fsharpKeyword figcaption figure footer form h1 h2 h3 h4 h5 h6 head header hr html i iframe
+syn keyword fsharpKeyword image img input ins kbd label legend li link listItem main map mark meta
+syn keyword fsharpKeyword metadata meter nav noscript object ol optgroup option orderedList output p
+syn keyword fsharpKeyword paragraph param picture pre progress q rb rp rt rtc ruby s samp script section
+syn keyword fsharpKeyword select small source span strong style sub summary sup table tableBody tableCell
+syn keyword fsharpKeyword tableHeader tableRow tbody td template text textarea textf tfoot th thead time
+syn keyword fsharpKeyword title tr track u ul unorderedList var video wbr
 
 syn keyword fsharpKeyword    async atomic break checked component const constraint
 syn keyword fsharpKeyword    constructor continue decimal eager event external
