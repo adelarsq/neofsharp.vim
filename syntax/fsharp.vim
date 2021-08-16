@@ -28,7 +28,12 @@ syn keyword  fsharpScript contained install_printer remove_printer requirethread
 syn keyword  fsharpScript contained trace untrace untrace_all print_depth
 syn keyword  fsharpScript contained print_length define undef if elif else endif
 syn keyword  fsharpScript contained line error warning light nowarn
-
+syn match    fsharpFunction "\v[A-Za-z0-9_]"
+syn match    fsharpIdent "\v((\w|\) *) +(\( *)?)@<=[A-Za-z0-9_]+"
+syn match    fsharpIdent "\v(\( *)@<=[a-z][A-Za-z0-9_]+ *(:)@="
+syn match    fsharpIdent "\v(\) *)@<=[a-z][A-Za-z0-9_]+"
+syn match    Type "\v((:) *)@<=[A-Za-z0-9_]+"
+syn match    Type "\v[A-Za-z0-9_]+ *(\.)@="
 
 " comments
 syn match    fsharpSingleLineComment "//.*$" contains=fsharpTodo,@Spell
@@ -44,36 +49,19 @@ syn match fsharpSymbol "\%(let\|use\|mutable\|rec\|and\|private\)\@<=!\=\s\+\zs\
 syn match fsharpSymbol "\%(member\)\@<=\s\+\w\+\.\zs\w\+"
 
 
-" types
-syn match    fsharpTypeName   "\%#=1\%(\<type\s\+\)\@<=\w\+"
-
-
-" errors
-syn match    fsharpBraceErr   "}"
-syn match    fsharpBrackErr   "\]"
-syn match    fsharpParenErr   ")"
-syn match    fsharpArrErr     "|]"
-syn match    fsharpCommentErr "\*)"
-
-
-" enclosing delimiters
-syn region   fsharpEncl transparent matchgroup=fsharpKeyword start="(" matchgroup=fsharpKeyword end=")" contains=ALLBUT,fsharpParenErr,fsharpScript
-syn region   fsharpEncl transparent matchgroup=fsharpKeyword start="{" matchgroup=fsharpKeyword end="}"  contains=ALLBUT,fsharpBraceErr,fsharpScript
-syn region   fsharpEncl transparent matchgroup=fsharpKeyword start="\[" matchgroup=fsharpKeyword end="\]" contains=ALLBUT,fsharpBrackErr,fsharpScript
-syn region   fsharpEncl transparent matchgroup=fsharpKeyword start="\[|" matchgroup=fsharpKeyword end="|\]" contains=ALLBUT,fsharpArrErr,fsharpScript
-
-
 " comments
 syn region   fsharpMultiLineComment start="(\*" end="\*)" contains=fsharpTodo
 syn keyword  fsharpTodo contained TODO FIXME XXX NOTE
 
 " keywords
+syn keyword Conditional      if elif try finally else match with then
+syn keyword Repeat           for while
 syn keyword fsharpKeyword    abstract as assert base begin class default delegate
-syn keyword fsharpKeyword    do done downcast downto elif else end exception
-syn keyword fsharpKeyword    extern for fun function global if in inherit inline
-syn keyword fsharpKeyword    interface lazy let match member module mutable
-syn keyword fsharpKeyword    namespace new of override rec static struct then
-syn keyword fsharpKeyword    to type upcast use val void when while with
+syn keyword fsharpKeyword    do done downcast downto end exception
+syn keyword fsharpKeyword    extern fun function global in inherit inline
+syn keyword fsharpKeyword    interface lazy let member mutable
+syn keyword fsharpKeyword    namespace new of override rec static struct
+syn keyword fsharpKeyword    to type upcast use val void when
 
 " Feliz keywords
 syn keyword fsharpKeyword Html
@@ -81,7 +69,7 @@ syn keyword fsharpKeyword a abbr address anchor animate animateMotion animateTra
 syn keyword fsharpKeyword audio b base bdi bdo blockquote body br button canvas caption cite code col
 syn keyword fsharpKeyword colgroup data datalist dd del details dfn dialog div dl dt em embed fieldSet
 syn keyword fsharpKeyword figcaption figure footer form h1 h2 h3 h4 h5 h6 head header hr html i iframe
-syn keyword fsharpKeyword image img input ins kbd label legend li link listItem main map mark meta
+syn keyword fsharpKeyword image img input ins kbd label legend li link listItem map mark meta
 syn keyword fsharpKeyword metadata meter nav noscript object ol optgroup option orderedList output p
 syn keyword fsharpKeyword paragraph param picture pre progress q rb rp rt rtc ruby s samp script section
 syn keyword fsharpKeyword select small source span strong style sub summary sup table tableBody tableCell
@@ -94,7 +82,7 @@ syn keyword fsharpKeyword    fixed functor include method mixin object parallel
 syn keyword fsharpKeyword    process pure return seq tailcall trait
 
 " additional operator keywords (Microsoft.FSharp.Core.Operators)
-syn keyword fsharpKeyword    box hash sizeof typeof typedefof unbox ref fst snd
+syn keyword fsharpKeyword    sizeof typeof typedefof unbox ref fst snd
 syn keyword fsharpKeyword    stdin stdout stderr
 
 " math operators (Microsoft.FSharp.Core.Operators)
@@ -108,10 +96,10 @@ if !exists('g:fsharp_no_linq') || g:fsharp_no_linq == 0
 endif
 
 " open
-syn keyword fsharpOpen       open
+syn keyword fsharpOpen       open module
 
 " exceptions
-syn keyword fsharpException  try failwith failwithf finally invalid_arg raise
+syn keyword fsharpException  failwith failwithf invalid_arg raise
 syn keyword fsharpException  rethrow
 
 " modifiers
@@ -128,6 +116,7 @@ syn keyword  fsharpType      array bool byte char decimal double enum exn float
 syn keyword  fsharpType      float32 int int16 int32 int64 lazy_t list nativeint
 syn keyword  fsharpType      obj option sbyte single string uint uint32 uint64
 syn keyword  fsharpType      uint16 unativeint unit
+syn match fsharpType         "\v(type +)@<=[A-Za-z0-9_]+"
 
 " core classes
 syn match    fsharpCore      "\u\a*\." transparent contains=fsharpCoreClass
@@ -135,11 +124,8 @@ syn match    fsharpCore      "\u\a*\." transparent contains=fsharpCoreClass
 syn keyword  fsharpCoreClass Array Async Directory File List Option Path Map Set contained
 syn keyword  fsharpCoreClass String Seq Tuple contained
 
-syn keyword fsharpCoreMethod printf printfn sprintf eprintf eprintfn fprintf
-syn keyword fsharpCoreMethod fprintfn
-
 " options
-syn keyword  fsharpOption    Some None
+syn keyword  fsharpOption    Some None Ok Error
 
 " operators
 syn keyword fsharpOperator   not and or
@@ -149,6 +135,7 @@ syn match   fsharpFormat     display "%\(\d\+\$\)\=[-+' #0*]*\(\d*\|\*\|\*\d\+\$
 " interpolation
 syn region   fsharpInterpolation matchgroup=fsharpInterpolationBrace start="\v\{" end="\v\}" contains=ALLBUT,fsharpArrErr,fsharpScript
 
+syn match    fsharpGeneric      "\v'[A-Za-z0-9_]+(')@!"
 syn match    fsharpCharacter    "'\\\d\d\d'\|'\\[\'ntbr]'\|'.'"
 syn match    fsharpCharErr      "'\\\d\d'\|'\\\d'"
 syn match    fsharpCharErr      "'\\[^\'ntbr]'"
@@ -163,14 +150,14 @@ syn match    fsharpTopStop      ";;"
 syn match    fsharpOperator     "\^"
 syn match    fsharpOperator     "::"
 
-syn match    fsharpLabel        "\<_\>"
-
 syn match    fsharpOperator     "&&"
 syn match    fsharpOperator     "<"
 syn match    fsharpOperator     ">"
 syn match    fsharpOperator     "|>"
 syn match    fsharpOperator     ":>"
 syn match    fsharpOperator     ":?>"
+syn match    fsharpOperator     ":?"
+syn match    fsharpOperator     ":"
 syn match    fsharpOperator     "&&&"
 syn match    fsharpOperator     "|||"
 syn match    fsharpOperator     "\.\."
@@ -196,9 +183,6 @@ syn match    fsharpFloat         "\<-\=\d\(_\|\d\)*\.\(_\|\d\)*\([eE][-+]\=\d\(_
 syn match    fsharpFloat         "\<-\=\d\(_\|\d\)*\.\(_\|\d\)*\([eE][-+]\=\d\(_\|\d\)*\)\=\>"
 syn match    fsharpFloat         "\<\d\+\.\d*"
 
-" modules
-syn match    fsharpModule     "\%#=1\%(\<open\s\+\)\@<=[a-zA-Z.]\+"
-
 " attributes
 syn region   fsharpAttrib matchgroup=fsharpAttribute start="\[<" end=">]"
 
@@ -214,12 +198,6 @@ if version >= 508 || !exists("did_fs_syntax_inits")
         command -nargs=+ HiLink hi def link <args>
     endif
 
-    HiLink fsharpBraceErr          Error
-    HiLink fsharpBrackErr          Error
-    HiLink fsharpParenErr          Error
-    HiLink fsharpArrErr            Error
-    HiLink fsharpCommentErr        Error
-
     HiLink fsharpSingleLineComment Comment
     HiLink fsharpMultiLineComment  Comment
     HiLink fsharpDocComment        Comment
@@ -232,7 +210,6 @@ if version >= 508 || !exists("did_fs_syntax_inits")
     HiLink fsharpPreCondit         Include
 
     HiLink fsharpKeyword           Keyword
-    HiLink fsharpCoreMethod        Keyword
 
     HiLink fsharpOCaml             Statement
     HiLink fsharpLinq              Statement
@@ -256,11 +233,9 @@ if version >= 508 || !exists("did_fs_syntax_inits")
 
     HiLink fsharpModifier          StorageClass
 
-    HiLink fsharpException         Exception
+    HiLink fsharpException         Error
 
-    HiLink fsharpLabel             Identifier
-    HiLink fsharpOption            Identifier
-    HiLink fsharpTypeName          Identifier
+    HiLink fsharpOption            Type
     HiLink fsharpModule            Identifier
 
     HiLink fsharpType              Type
@@ -273,6 +248,9 @@ if version >= 508 || !exists("did_fs_syntax_inits")
 
     HiLink fsharpEncl              Delimiter
     HiLink fsharpAttribute         Delimiter
+    HiLink fsharpFunction          Function
+    HiLink fsharpIdent             Identifier
+    HiLink fsharpGeneric           Type
 
     delcommand HiLink
 endif
