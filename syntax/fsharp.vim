@@ -32,8 +32,10 @@ syn match    fsharpFunction "\v[A-Za-z0-9_]"
 syn match    fsharpIdent "\v((\w|\) *) +(\( *)?)@<=[A-Za-z0-9_]+"
 syn match    fsharpIdent "\v(\( *)@<=[a-z][A-Za-z0-9_]+ *(:)@="
 syn match    fsharpIdent "\v(\) *)@<=[a-z][A-Za-z0-9_]+"
-syn match    Type "\v((:) *)@<=[A-Za-z0-9_]+"
-syn match    Type "\v[A-Za-z0-9_]+ *(\.)@="
+syn match    Constant "\v((:) *)@<=[A-Za-z0-9_]+"
+syn match    Constant "\v[A-Za-z0-9_]+ *(\.)@="
+syn match    Constant "\v[A-Za-z0-9_]+ *(\.)@="
+syn match    Constant "\v((new +)\(?)@<=[A-Za-z0-9_]+"
 
 " comments
 syn match    fsharpSingleLineComment "//.*$" contains=fsharpTodo,@Spell
