@@ -7,7 +7,13 @@
 ## Features 🧩
 
 - [x] Syntax support;
-- [x] Filetype support for F# files;
+- [x] Filetype support for F# files:
+  - `*.fs`
+  - `*.fsi`
+  - `*.fsx`
+  - `*.fsl`
+  - `*.fsy`
+  - `*.fsproj`
 - [x] Basic support for [Keithbsmiley/investigate.vim](https://github.com/Keithbsmiley/investigate.vim) on `*.fsproj` files;
 - [x] Highlight for [Zaid-Ajaj/Feliz](https://github.com/Zaid-Ajaj/Feliz);
 - [ ] Highlight for [fable-compiler/fable-react](https://github.com/fable-compiler/fable-react).
