@@ -11,9 +11,9 @@
   - `*.fs`
   - `*.fsi`
   - `*.fsx`
-  - `*.fsl`
-  - `*.fsy`
-  - `*.fsproj`
+  - `*.fsl` - FsLex 
+  - `*.fsy` - FsYacc 
+  - `*.fsproj` - XML config file
 - [x] Basic support for [Keithbsmiley/investigate.vim](https://github.com/Keithbsmiley/investigate.vim) on `*.fsproj` files;
 - [x] Highlight for [Zaid-Ajaj/Feliz](https://github.com/Zaid-Ajaj/Feliz);
 - [ ] Highlight for [fable-compiler/fable-react](https://github.com/fable-compiler/fable-react).
