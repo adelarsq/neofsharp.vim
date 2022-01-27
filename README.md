@@ -11,6 +11,7 @@
   - `*.fs`
   - `*.fsi`
   - `*.fsx`
+  - `*.fsscript`
   - `*.fsl` - FsLex 
   - `*.fsy` - FsYacc 
   - `*.fsproj` - XML config file
