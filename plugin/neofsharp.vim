@@ -9,4 +9,4 @@ augroup neofsharp_nvimtree
     au!
     au Filetype fsproj nmap <buffer> <silent> K 0f"lvi":call investigate#Investigate('v')<CR>
     au Filetype fsproj vmap <buffer> <silent> K :call investigate#Investigate('v')<CR>
-augroup
+augroup END
