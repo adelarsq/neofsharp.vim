@@ -19,6 +19,7 @@
   - Hit `K` (normal or visual mode) on the dependency line to open the [nuget](https://www.nuget.org) page for the package
 - [x] Highlight for [Zaid-Ajaj/Feliz](https://github.com/Zaid-Ajaj/Feliz);
 - [ ] Highlight for [fable-compiler/fable-react](https://github.com/fable-compiler/fable-react).
+- [ ] Support for Html, CSS and SQL based on the [Code plugin](https://marketplace.visualstudio.com/items?itemName=alfonsogarciacaro.vscode-template-fsharp-highlight).
 
 ## Acknowledgments 🤗
 
