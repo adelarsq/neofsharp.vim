@@ -3,7 +3,6 @@ if exists('g:loaded_neofsharp')
 endif
 let g:loaded_neofsharp=1
 
-let g:investigate_url_for_fsharp='https://docs.microsoft.com/en-us/search/?terms=^s&category=Reference&scope=.NET'
 let g:investigate_url_for_fsproj='https://www.nuget.org/packages/^s'
 
 augroup neofsharp_nvimtree
