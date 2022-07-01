@@ -21,6 +21,7 @@
 - [x] Highlight for [Zaid-Ajaj/Feliz](https://github.com/Zaid-Ajaj/Feliz);
 - [ ] Highlight for [fable-compiler/fable-react](https://github.com/fable-compiler/fable-react).
 - [ ] Support for Html, CSS and SQL based on the [Code plugin](https://marketplace.visualstudio.com/items?itemName=alfonsogarciacaro.vscode-template-fsharp-highlight).
+- [ ] Support for [PowerUp](https://github.com/badamczewski/PowerUp#f-decompilation-and-dissasembly)
 
 ## Acknowledgments 🤗
 
